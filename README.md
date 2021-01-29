@@ -1,1 +1,2 @@
 # CourseCommune_FLAG
+yzcheck
