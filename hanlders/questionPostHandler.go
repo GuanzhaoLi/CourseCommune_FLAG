@@ -37,7 +37,7 @@ func questionPostHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// post the question
-	err := saveQuestionPost(&p)
+	err := saveQuestion(&p)
 	if err != nil {
 		http.Error(w, "Failed to post question", http.StatusInternalServerError)
 		return
@@ -58,33 +58,21 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	keywords := r.URL.Query().Get("keywords")
 
-	var posts []Post
+	var questions []Question
 	var err error
-	posts, err = searchPostsByKeywords(keywords)
+	quesitons, err = searchQuestionsByKeywords(keywords)
 
 	if err != nil {
-		http.Error(w, "Failed to read post from Elasticsearch", http.StatusInternalServerError)
-		fmt.Printf("Failed to read post from Elasticsearch %v.\n", err)
+		http.Error(w, "Failed to read question from Elasticsearch", http.StatusInternalServerError)
+		fmt.Printf("Failed to read question from Elasticsearch %v.\n", err)
 		return
 	}
 
-	js, err := json.Marshal(posts)
+	js, err := json.Marshal(questions)
 	if err != nil {
-		http.Error(w, "Failed to parse posts into JSON format", http.StatusInternalServerError)
-		fmt.Printf("Failed to parse posts into JSON format %v.\n", err)
+		http.Error(w, "Failed to parse questions into JSON format", http.StatusInternalServerError)
+		fmt.Printf("Failed to parse questions into JSON format %v.\n", err)
 		return
 	}
 	w.Write(js)
-}
-
-
-
-
-
-func saveQuestionPost(question *Question) error {
-	// create database client
-
-	// save to data base
-
-	// return error if any
 }
