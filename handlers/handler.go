@@ -46,3 +46,8 @@ func answerQuestion(w http.ResponseWriter, r *http.Request) {
 	//request should contain question id and answer?
 }
 
+
+func pickMeeting(w http.ResponseWriter, r *http.Request) {
+	
+}
+
