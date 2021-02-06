@@ -21,7 +21,7 @@ const listData = [
         studentId: '10010',
         subject: '数学',
         description: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        content: '121212问题描述问题12描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述',
+        content: '问题描述2',
         answer: '初始回答',
     }
 ];
