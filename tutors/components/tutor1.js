@@ -6,7 +6,6 @@ import axios from 'axios'
 
 import {Button, Card, Modal} from 'antd'
 import BASE_URL from '../constants'
-import {EllipsisOutlined} from '@ant-design/icons'
 
 
 
@@ -18,15 +17,23 @@ const arr = [
         id: `0`,
         startDate: "2.6 19:00",
         endDate: "2.6 20:00",
-        subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+        subject: '数学',
         content: '问题描述',
-        acceptOrNot: false
     },
     {
         href: 'https://ant.design',
         id: `0`,
-        subject: '学科',
+        startDate: "2.6 19:00",
+        endDate: "2.6 20:00",
+        subject: '物理',
+        content: '问题描述'
+    },
+    {
+        href: 'https://ant.design',
+        id: `0`,
+        startDate: "2.6 13:00",
+        endDate: "2.6 25:00",
+        subject: '化学',
         avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         content: '问题描述'
     },
@@ -34,56 +41,42 @@ const arr = [
         href: 'https://ant.design',
         id: `0`,
         subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         content: '问题描述'
     },
     {
         href: 'https://ant.design',
         id: `0`,
         subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        content: '问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         content: '问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述'
     },
     {
         href: 'https://ant.design',
         id: `0`,
         subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         content: '问题描述'
     },
     {
         href: 'https://ant.design',
         id: `0`,
         subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         content: '问题描述'
     },
     {
         href: 'https://ant.design',
         id: `0`,
         subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         content: '问题描述'
     },
     {
         href: 'https://ant.design',
         id: `0`,
         subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         content: '问题描述'
     },
     {
         href: 'https://ant.design',
         id: `0`,
         subject: '学科',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
         content: '问题描述'
     },
 ]
