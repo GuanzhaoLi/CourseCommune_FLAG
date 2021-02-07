@@ -5,81 +5,11 @@ import InfiniteScroll from 'react-infinite-scroller' //下拉加载
 import axios from 'axios'
 
 import {Button, Card, Modal} from 'antd'
-import BASE_URL from '../constants'
 
 
 
 // get data here
 // test data
-const arr = [
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        startDate: "2.6 19:00",
-        endDate: "2.6 20:00",
-        subject: '数学',
-        content: '问题描述',
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        startDate: "2.6 19:00",
-        endDate: "2.6 20:00",
-        subject: '物理',
-        content: '问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        startDate: "2.6 13:00",
-        endDate: "2.6 25:00",
-        subject: '化学',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        content: '问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        subject: '学科',
-        content: '问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        subject: '学科',
-        content: '问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        subject: '学科',
-        content: '问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        subject: '学科',
-        content: '问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        subject: '学科',
-        content: '问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        subject: '学科',
-        content: '问题描述'
-    },
-    {
-        href: 'https://ant.design',
-        id: `0`,
-        subject: '学科',
-        content: '问题描述'
-    },
-]
 
 export default class Pinterest extends Component {
     state = {
@@ -90,18 +20,15 @@ export default class Pinterest extends Component {
 
     getVideoData = ()=> {
         // define the url here
-        // const url = BASE_URL;
-        // axios.get(url).
-        // then(response =>{
-        //     this.setState({
-        //         data: response.data.videos
-        //     })
-        // }).catch((err)=>{
-        //     console.log("ERROR",err.message);
-        //     alert("Fail to get Data!");
-        // })
-        this.setState({
-            data : arr,
+        const url = "";
+        axios.get(url).
+        then(response =>{
+            this.setState({
+                data: response.data.videos
+            })
+        }).catch((err)=>{
+            console.log("ERROR",err.message);
+            alert("Fail to get Data!");
         })
     }
 
@@ -129,7 +56,7 @@ export default class Pinterest extends Component {
 
         const opt = {
             method: "POST",
-            url: `${BASE_URL}/accept`,
+            url: `/accept`,
             data: {
                 acceptOrNot: true
             },
@@ -156,12 +83,11 @@ export default class Pinterest extends Component {
     imagesOnload = () => {
         const elLoad = imagesloaded('.pages_hoc')
         elLoad.on('always', () => {
-            // 调用瀑布流
             this.advanceWidth()
         })
     }
 
-    //瀑布流
+    //Pinterest Loading
     advanceWidth = () => {
 
         var elem = document.querySelector('.pages_hoc');
@@ -189,7 +115,6 @@ export default class Pinterest extends Component {
                     <div className="pages_hoc">
                         {
                             data.map((item, index) => {
-                                if(item.acceptOrNot==false) {
                                     return (
                                         <div key={index} className='imgBox'>
                                             <Card className="cards">
@@ -213,7 +138,6 @@ export default class Pinterest extends Component {
                                             </Modal>
                                         </div>
                                     )
-                                }
                             })
                         }
                     </div>
