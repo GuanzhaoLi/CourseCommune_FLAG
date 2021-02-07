@@ -1,7 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Modal, Button } from 'antd';
-import BASE_URL from '../constants';
 import axios from 'axios';
 
 export default class Details extends React.Component{
@@ -9,7 +8,8 @@ export default class Details extends React.Component{
         super(props);
         this.state = {
             isModalVisible : false,
-            textareaValue: this.props.answer,
+            data: this.props.data,
+            textareaValue: this.props.data.answer,
         }
     }
 
@@ -26,7 +26,7 @@ export default class Details extends React.Component{
     Submit = () => {
         const opt = {
             method: "POST",
-            url: `${BASE_URL}/answer`,
+            url: `/answer`,
             data: {
                 answer: this.state.textareaValue
             },
@@ -35,7 +35,6 @@ export default class Details extends React.Component{
             .then((res) => {
                 if (res.status === 200) {
                     console.log(res.data);
-                    const { data } = res;
                 }
             })
             .catch((err) => {
@@ -44,8 +43,15 @@ export default class Details extends React.Component{
             });
         console.log(this.state.textareaValue);
 
+        const data = {...this.state.data}
+        data.answer = this.state.textareaValue
+
+
+        this.props.saveAnswers(data);
+
         // Close the window
         this.setState({
+            data: data,
             isModalVisible : false
         })
     };
