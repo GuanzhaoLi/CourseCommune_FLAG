@@ -21,7 +21,8 @@ create table QuestionOrder(
 
 create table Tutor(
 	TutorId int,
-	Level int, 
+	Level int,
+	Subject int,
 	FirstName varchar(50),
 	LastName varchar(50),
 	Account_Balance int,
