@@ -29,6 +29,10 @@ func handleRequestsOfQuestion() {
 	// to pass in our newly created router as the second
 	// argument
 	log.Fatal(http.ListenAndServe(":10000", myRouter))
+
+	// jianheng added. 照葫芦画瓢
+	myRouter.handleFunc("/{user}/tutor_search", searchTutor).Methods("GET")
+	http.handleFunc("/{user}/schedule_meeing", requestVideo).Methods("POST")
 }
 
 func main() {
