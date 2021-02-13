@@ -23,7 +23,7 @@ type Criteria struct {
 }
 
 // receive JSON, return JSON
-func searchTutor(w http.ResponseWriter, r *http.Request) {
+func studentSearchTutors(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.body)
 	w.Header().Set("Content-Type", "application/json") 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
