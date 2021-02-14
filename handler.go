@@ -27,6 +27,8 @@ func studentHistory(w http.ResponseWriter, r *http.Request)  {
 		http.Error(w, er.Error(), http.StatusAccepted)
 		return
 	}
+	//清空列表
+	studentres = nil
 
 }
 
@@ -46,4 +48,5 @@ func tutorHistory(w http.ResponseWriter, r *http.Request){
 		http.Error(w, er.Error(), http.StatusAccepted)
 		return
 	}
+	tutors = nil
 }
