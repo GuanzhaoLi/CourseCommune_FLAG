@@ -60,8 +60,8 @@ func studentHis(studenthis StudentHistory) {
 		comment := StudentHistory{Id: id, OrderId: videoid, Qid: questionid}
 		studentres = append(studentres,comment)
 	}
-	rows.Close()
-	DB.Close()
+	//rows.Close()
+	//DB.Close()
 
 }
 var tutors = make([]TutorHistory, 0)
@@ -80,8 +80,8 @@ func toturHis(tutorhis TutorHistory){
 		comment := TutorHistory{Id: id, OrderId: videoid, Qid: questionid}
 		tutors = append(tutors,comment)
 	}
-	rows.Close()
-	DB.Close()
+// 	rows.Close()
+// 	DB.Close()
 }
 //初始化表单
 func initialTable(){
