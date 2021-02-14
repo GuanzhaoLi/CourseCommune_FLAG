@@ -3,10 +3,10 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"strings"
 	"time"
+	_ "github.com/go-sql-driver/mysql"
 )
 //数据库配置
 const (
@@ -40,12 +40,11 @@ func InitDB() {
 	fmt.Println("connnect success")
 	initialTable()
 }
-var studentres = make([]StudentHistory, 0)
 
-//Student history
-func studentHis(studenthis StudentHistory) {
+//Student history, return type interface{}
+func studentHis(studenthis StudentHistory) interface{}{
 	var target = studenthis.Id
-	//studentres := make([] StudentHistory, 0)
+	studentres := make([] StudentHistory, 0)
 
 	rows, err := DB.Query("select SH.id, SH.VideoOrder, SH.QuestionOrder from Student_History SH join Student ST on SH.id = ST.StudentId where SH.id = ?", target)
 	if err != nil {
@@ -62,12 +61,12 @@ func studentHis(studenthis StudentHistory) {
 	}
 	//rows.Close()
 	//DB.Close()
-
+	return studentres
 }
-var tutors = make([]TutorHistory, 0)
-
-func toturHis(tutorhis TutorHistory){
+//Tutor history, return type interface{}
+func toturHis(tutorhis TutorHistory) interface{} {
 	var find = tutorhis.Id
+	var tutors = make([]TutorHistory, 0)
 	rows, err := DB.Query("select TH.id, TH.VideoOrder, TH.QuestionOrder from Tutor_History TH join Tutor TU on TH.id = TU.TutorId where TH.id = ?" ,find)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -82,6 +81,7 @@ func toturHis(tutorhis TutorHistory){
 	}
 // 	rows.Close()
 // 	DB.Close()
+	return turtors
 }
 //初始化表单
 func initialTable(){
