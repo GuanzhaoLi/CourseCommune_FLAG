@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	_ "fmt"
+	"fmt"
 	"net/http"
 	_ "github.com/gorilla/mux"
 )
@@ -13,22 +13,21 @@ func studentHistory(w http.ResponseWriter, r *http.Request)  {
 	//解析json
 	err := json.NewDecoder(r.Body).Decode(&s)
 	if err != nil {
+		fmt.Println(2)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	//function
-	studentHis(s)
+	//res 接收return
+	res :=studentHis(s)
 
 	w.Header().Set("Content-Type", "application/json")
-
 	//转回json
-	er := json.NewEncoder(w).Encode(&studentres)
+	er := json.NewEncoder(w).Encode(&res)
 	if er != nil {
+		fmt.Println(3)
 		http.Error(w, er.Error(), http.StatusAccepted)
 		return
 	}
-	//清空列表
-	studentres = nil
 
 }
 
@@ -39,14 +38,13 @@ func tutorHistory(w http.ResponseWriter, r *http.Request){
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	toturHis(t)
+	res := toturHis(t)
 
 	w.Header().Set("Content-Type", "application/json")
 
-	er := json.NewEncoder(w).Encode(&tutors)
+	er := json.NewEncoder(w).Encode(&res)
 	if er != nil {
 		http.Error(w, er.Error(), http.StatusAccepted)
 		return
 	}
-	tutors = nil
 }
