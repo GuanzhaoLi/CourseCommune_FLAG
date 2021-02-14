@@ -2,13 +2,9 @@ package main
 
 import (
 	"fmt"
-	_ "fmt"
 	"github.com/gorilla/mux"
 	"log"
-	_ "log"
 	"net/http"
-	_ "net/http"
-	_ "github.com/gorilla/mux"
 	_ "github.com/go-sql-driver/mysql"
 )
 
