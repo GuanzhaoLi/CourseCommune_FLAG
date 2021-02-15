@@ -1,0 +1,24 @@
+.register-block {
+    margin: auto;
+    width: 60%;
+    padding: 30px;
+    align-items: center;
+}
+
+.register-form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.register-btn {
+    width: 100%;
+}
+
+.register-logo {
+     display: block;
+     height: 100px;
+     width: 100px;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 25px;
+ }

@@ -1,0 +1,32 @@
+@import '~antd/dist/antd.css';
+.whole_list {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      width: 80%;
+      height: 90%;
+      border: 3px solid white;
+      overflow: auto;
+}
+
+.titleOfList{
+    position: relative;
+    /*left : 5px;*/
+    font-size: 26px;
+}
+.contentOfQuestions{
+    position: relative;
+    /*left : 5px;*/
+    font-size:20px;
+}
+.listItems{
+    position: relative;
+}
+
+.answerOfQuestion{
+    width: 90%;
+    height: 400px;
+    font-size: 20px;
+    overflow: scroll;
+}
+p {word-wrap:break-word;}

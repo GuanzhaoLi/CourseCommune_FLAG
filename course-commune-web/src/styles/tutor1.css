@@ -1,0 +1,29 @@
+@import '~antd/dist/antd.css';
+
+/*.pages_pinterest {*/
+/*    position: absolute;*/
+/*    bottom: 0px;*/
+/*    right:0px;*/
+/*    width: 80%;*/
+/*    height: 90%;*/
+/*    border: 3px solid white;*/
+/*    overflow: auto;*/
+/*    box-sizing: border-box;*/
+/*}*/
+.pages_hoc {
+    height: 100%;
+    margin: 0 auto;
+}
+.imgBox {
+    height: fit-content;
+    width: 400px;
+    border: 2px solid white;
+    margin-bottom: 30px;
+}
+img{
+    vertical-align: top;
+}
+.cards{
+    height: fit-content;
+}
+

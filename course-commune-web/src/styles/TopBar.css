@@ -1,0 +1,18 @@
+.app-logo {
+    float: left;
+    height: 40px;
+    margin: 16px 0px 0 0;
+    pointer-events: none;
+}
+
+.ant-layout-header{
+    padding: 0 12px;
+    background: #c7d0da;
+}
+
+.logout {
+    float: right;
+    color: #f6f7f8;
+    font-size: 35px;
+    margin-top: 25px;
+}

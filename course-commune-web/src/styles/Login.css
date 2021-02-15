@@ -1,0 +1,35 @@
+.login-block {
+    /*margin: auto;*/
+    /*width: 60%;*/
+    /*padding: 10px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+
+}
+
+.login-form{
+    width: 300px;
+    margin: 0 auto;
+}
+.login-form-forgot {
+    float: right;
+}
+
+.ant-col-rtl {
+    float: left;
+}
+
+.register-new-account {
+    float: right;
+    margin-right: 20px;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+
+
+
