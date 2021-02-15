@@ -110,7 +110,7 @@ func tutorSignupHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Printf("Student added successfully: %s %s.\n", tutor.Firstname, tutor.Lastname)
+	fmt.Printf("Tutor added successfully: %s %s.\n", tutor.Firstname, tutor.Lastname)
 }
 
 // signin sign up handler:
