@@ -74,6 +74,45 @@ func QuestionSearchHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(js)
 }
 
+func tutorSignupHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+	if r.Method == "OPTIONS" {
+		return
+	}
+
+	decoder := json.NewDecoder(r.Body)
+	var tutor Tutor
+	if err := decoder.Decode(&tutor); err != nil {
+		http.Error(w, "Cannot decode user data from client", http.StatusBadRequest)
+		fmt.Printf("Cannot decode user data from client: %v\n", err)
+	}
+
+	if tutor.Firstname == "" || tutor.Lastname == "" || tutor.Email == "" {
+		http.Error(w, "Invalid username or password", http.StatusBadRequest)
+		fmt.Printf("Invalid username or password\n")
+		return
+	}
+
+	success, err := addTutor(&tutor)
+
+	if err != nil {
+		http.Error(w, "Failed to save user to database", http.StatusInternalServerError)
+		fmt.Printf("Failed to save user to database: %v\n", err)
+		return
+	}
+
+	if !success {
+		http.Error(w, "User already exists", http.StatusBadRequest)
+		fmt.Printf("User already exists\n")
+		return
+	}
+
+	fmt.Printf("Student added successfully: %s %s.\n", tutor.Firstname, tutor.Lastname)
+}
+
 // signin sign up handler:
 //url: /signup
 func studentSignupHandler(w http.ResponseWriter, r *http.Request) {

@@ -6,6 +6,7 @@ const (
 	DATABASE      = "root:rootroot@tcp(localhost:3306)/flagcamp?charset=utf8&parseTime=True&loc=Local"
 	USER_TABLE    = "users"
 	STUDENT_TABLE = "student"
+	TUTOR_TABLE   = "Tutor"
 )
 
 type User struct {
@@ -29,10 +30,16 @@ type Student struct {
 	// isTutor bool `json:"isTutor"` //does Go have enums?
 }
 
-type TutorSignUpBody struct {
+type Tutor struct {
 	Id        string `json:"id"`
+	Email     string `json:"email"`
+	Password  string `json:"password"`
 	Firstname string `json:"firstname"`
 	Lastname  string `json:"lastname"`
+	Level     string `json:"level"`
+	Subject   string `json:"subject"`
+	// Account_Balance int,
+	// Rating int,
 }
 
 func checkUser(email string, password string) (bool, error) {
@@ -55,6 +62,38 @@ func checkUser(email string, password string) (bool, error) {
 	}
 }
 
+func addTutor(tutor *Tutor) (bool, error) {
+	db, err := sql.Open("mysql", DATABASE)
+	if err != nil {
+		return false, err
+	}
+	defer db.Close()
+	email := tutor.Email
+	rows, err := db.Query("select email from "+USER_TABLE+" where email = ?", email)
+	if err != nil {
+		return false, err
+	}
+	defer rows.Close()
+	if hasnext := rows.Next(); hasnext {
+		return false, nil
+	}
+	id := tutor.Id
+	fn := tutor.Firstname
+	ln := tutor.Lastname
+	lev := tutor.Level
+	pass := tutor.Password
+	subject := tutor.Subject
+	sql := "INSERT INTO " + TUTOR_TABLE + " (TutorId, FirstName, LastName, Level, Subject) VALUES (?,?,?,?,?)"
+	_, err = db.Exec(sql, id, fn, ln, lev, subject)
+	sql = "INSERT INTO " + USER_TABLE + " (id, password, email) VALUES (?,?,?)"
+	_, err = db.Exec(sql, id, pass, email)
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
+
+//should id be auto-incremented?
 func addStudent(student *Student) (bool, error) {
 	db, err := sql.Open("mysql", DATABASE)
 	if err != nil {
