@@ -96,16 +96,16 @@ function Register (props) {
             >
                 {/*<img src={logo} className="register-logo"/>*/}
                 <Form.Item
-                    name="nickname"
+                    name="username"
                     rules={[
                         {
                             required: true,
-                            message: '请输入昵称!',
+                            message: '请输入用户名!',
                             whitespace: true,
                         },
                     ]}
                 >
-                    <Input placeholder="请输入昵称"/>
+                    <Input placeholder="请输入用户名"/>
                 </Form.Item>
 
                 <Form.Item
@@ -160,45 +160,45 @@ function Register (props) {
                 </Form.Item>
 
 
-                <Form.Item
-                    name="phone"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your phone number!',
-                        },
-                    ]}
-                >
-                    <Input
-                        addonBefore={prefixSelector}
-                        style={{
-                            width: '100%',
-                        }}
-                        placeholder="请输入电话号码"
-                    />
-                </Form.Item>
+                {/*<Form.Item*/}
+                {/*    name="phone"*/}
+                {/*    rules={[*/}
+                {/*        {*/}
+                {/*            required: true,*/}
+                {/*            message: 'Please input your phone number!',*/}
+                {/*        },*/}
+                {/*    ]}*/}
+                {/*>*/}
+                {/*    <Input*/}
+                {/*        addonBefore={prefixSelector}*/}
+                {/*        style={{*/}
+                {/*            width: '100%',*/}
+                {/*        }}*/}
+                {/*        placeholder="请输入电话号码"*/}
+                {/*    />*/}
+                {/*</Form.Item>*/}
 
-                <Form.Item className="captcha">
-                    <Row gutter={8}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="captcha"
-                                noStyle
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input the captcha you got!',
-                                    },
-                                ]}
-                            >
-                                <Input placeholder="请输入验证码"/>
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Button>发送验证码</Button>
-                        </Col>
-                    </Row>
-                </Form.Item>
+                {/*<Form.Item className="captcha">*/}
+                {/*    <Row gutter={8}>*/}
+                {/*        <Col span={12}>*/}
+                {/*            <Form.Item*/}
+                {/*                name="captcha"*/}
+                {/*                noStyle*/}
+                {/*                rules={[*/}
+                {/*                    {*/}
+                {/*                        required: true,*/}
+                {/*                        message: 'Please input the captcha you got!',*/}
+                {/*                    },*/}
+                {/*                ]}*/}
+                {/*            >*/}
+                {/*                <Input placeholder="请输入验证码"/>*/}
+                {/*            </Form.Item>*/}
+                {/*        </Col>*/}
+                {/*        <Col span={12}>*/}
+                {/*            <Button>发送验证码</Button>*/}
+                {/*        </Col>*/}
+                {/*    </Row>*/}
+                {/*</Form.Item>*/}
 
                 <Form.Item
                     name="agreement"
@@ -212,7 +212,7 @@ function Register (props) {
                     {...tailFormItemLayout}
                 >
                     <Checkbox>
-                        I have read the <a href="">agreement</a>
+                        我已经阅读用户 <a href="">协议</a>
                     </Checkbox>
                 </Form.Item>
 

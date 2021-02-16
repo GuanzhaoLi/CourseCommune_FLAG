@@ -28,8 +28,8 @@ function App() {
     };
     return (
         <div className="App">
-            <TopBar isLoggedIn={isLoggedIn} handleLogout={logout}/>
-            <Main isLoggedIn={isLoggedIn} handleLoggedIn={loggedIn} />
+            <TopBar isLoggedIn={true} handleLogout={logout}/>
+            <Main isLoggedIn={true} handleLoggedIn={loggedIn} />
         </div>
     );
 }

@@ -3,8 +3,8 @@ import {Layout} from "antd";
 import Aside from "./Aside";
 import Crumb from "./Crumb";
 import MainContent from "./MainContent"
-import Pinterest from "./tutor1"
-import CardList from "./tutor2"
+import Pinterest from "./tutor1Test"
+import CardList from "./tutor2Test"
 
 function Home() {
     return (
