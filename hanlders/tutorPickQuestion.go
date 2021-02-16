@@ -39,7 +39,7 @@ func tutorPickQuestion(w http.ResponseWriter, r *http.Request) {
 
 func updateQuestionToDB(q *QuestionOrder) error {
 	q.EndTime = time.Now()
-	_, err2 := DB.Exec("update QuestionOrder set FulfilledBy = ?, EndTime = ? where QId = ?", q.FulfilledBy, q.EndTime, q.QId) // 语句 FY
+	_, err2 := DB.Exec("update QuestionOrder set FulfilledBy = ?, EndTime = ?, Answer = ? where QId = ?", q.FulfilledBy, q.EndTime, q.Answer, q.QId) // 语句 FY
 	// unsolved, table need to add Answer column
 	return err2
 }

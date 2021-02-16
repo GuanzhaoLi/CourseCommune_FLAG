@@ -14,7 +14,7 @@ const (
 	password = "courseCommune1"
 	ip       = "127.0.0.1"
 	port     = "3306"
-	dbName   = "qa"
+	dbName   = "qa1"
 )
 
 //Db数据库连接池
@@ -46,11 +46,11 @@ func initialTable(){
 	{ // Create a new table
 		query := `
 		CREATE TABLE IF NOT EXISTS VideoOrder(
-			OrderId int, 
+			OrderId int AUTO_INCREMENT, 
 			StartTime DateTime, EndTime DateTime, 
 			RequestBy int, FulfilledBy int, Duration Integer,
 			Subject varchar(50), Level int, Keywords varchar(256), 
-			UsersId int,
+			Agreed int, T_s_rating int, S_t_rating int, 
 			Primary Key(OrderId));
 			`
 		if _, err := DB.Exec(query); err != nil {
@@ -61,11 +61,11 @@ func initialTable(){
 	{
 		query := `
 		CREATE TABLE IF NOT EXISTS QuestionOrder(
-			QId int,
+			QId int AUTO_INCREMENT,
 			StartTime DateTime, EndTime DateTime, 
 			RequestBy int, FulfilledBy int,
 			Subject varchar(50), Level int, Keywords varchar(256), 
-			UserId int,
+			Answer varchar(256), S_t_rating int, 
 			Primary Key(QId)
 			);
 		`
@@ -77,9 +77,9 @@ func initialTable(){
 	{
 		query := `
 		CREATE TABLE IF NOT EXISTS Tutor(
-			TutorId int,
+			TutorId int AUTO_INCREMENT,
 			Level int,
-			Subject int,
+			Subject varchar(50),
 			FirstName varchar(50),
 			LastName varchar(50),
 			Account_Balance int,
@@ -95,7 +95,7 @@ func initialTable(){
 	{
 		query := `
 		CREATE TABLE IF NOT EXISTS Student(
-			StudentId int, 
+			StudentId int AUTO_INCREMENT, 
 			FirstName varchar(50),
 			LastName varchar(50),
 			Level int,
@@ -130,7 +130,7 @@ func initialTable(){
 	{
 		query := `
 		CREATE TABLE IF NOT EXISTS Student_Preference(
-			id int, 
+			id int AUTO_INCREMENT, 
 			Prefered_tutor int,
 			Comments varchar(256),
 			Foreign Key(id) References Student(StudentId) ON DELETE CASCADE ON Update CASCADE
@@ -144,7 +144,7 @@ func initialTable(){
 	{
 		query := `
 		CREATE TABLE IF NOT EXISTS Student_History(
-			id int, 
+			id int AUTO_INCREMENT, 
 			VideoOrder int,
 			QuestionOrder int,
 			Foreign Key(id) References Student(StudentId) ON DELETE CASCADE ON Update CASCADE
@@ -158,7 +158,7 @@ func initialTable(){
 	{
 		query := `
 		CREATE TABLE IF NOT EXISTS Tutor_History(
-			id int, 
+			id int AUTO_INCREMENT, 
 			VideoOrder int,
 			QuestionOrder int,
 			Foreign Key(id) References Tutor(TutorId) ON DELETE CASCADE ON Update CASCADE

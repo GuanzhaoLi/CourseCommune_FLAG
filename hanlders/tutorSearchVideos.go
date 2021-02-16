@@ -10,7 +10,7 @@ import (
 func tutorSearchVideos(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json") 
 
-	var c Criteria
+	var c Tcriteria
 	err := json.NewDecoder(r.Body).Decode(&c)
     if err != nil {
         http.Error(w, err.Error(), http.StatusBadRequest)
@@ -27,9 +27,9 @@ func tutorSearchVideos(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func findVideoTasks(c *Criteria) ([]VideoOrder, error) {
+func findVideoTasks(c *Tcriteria) ([]VideoOrder, error) {
 	// search for questions
-	results, err2 := DB.Query("select OrderId, StartTime, RequestBy, Keywords from VideoOrder where Level = ? AND Subject = ? AND FulfilledBy is null", c.Level, c.Subject) 
+	results, err2 := DB.Query("select OrderId, StartTime, RequestBy, Keywords from VideoOrder where Level = ? AND Subject = ? AND FulfilledBy = ?", c.Level, c.Subject, c.TutorId) 
 
 	if err2 != nil {
 		panic(err2.Error())

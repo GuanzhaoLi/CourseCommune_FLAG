@@ -30,7 +30,7 @@ func studentRequestVideo(w http.ResponseWriter, r *http.Request) {
 }
 
 func postVrToDB(vr *VideoOrder) error {
-	_, err2 := DB.Exec("insert into VideoOrder values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 5, vr.StartTime, vr.EndTime, vr.RequestBy, vr.FulfilledBy, vr.Duration, vr.Subject, vr.Level, vr.Keywords, vr.T_s_rating)
+	_, err2 := DB.Exec("insert into VideoOrder values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", nil, vr.StartTime, vr.EndTime, vr.RequestBy, vr.FulfilledBy, vr.Duration, vr.Subject, vr.Level, vr.Keywords, nil, vr.T_s_rating, vr.S_t_rating)
 
 	return err2
 }

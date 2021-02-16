@@ -8,7 +8,7 @@ import (
 	
 )
 
-type Tutor struct { // 内部的东西需要开头大写吗。其他api也用了 Tutor struct，但不一样。FY
+type Tutorr struct { // 内部的东西需要开头大写吗。其他api也用了 Tutor struct，但不一样。FY
 	TutorId     int64 `json:"tutorId"`
 	FirstName   string `json:"firstName"`
 	LastName   	string `json:"lastName"`
@@ -36,15 +36,15 @@ func studentSearchTutors(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func findTutors(c *Criteria) ([]Tutor, error) {
+func findTutors(c *Criteria) ([]Tutorr, error) {
 	results, err2 := DB.Query("select TutorId, FirstName, LastName, Rating from Tutor where Level = ? and Subject = ?", c.Level, c.Subject)  // SQL 语句 FY
 	if err2 != nil {
 		panic(err2.Error())
 	}
 	// get all tutors searched from database
-	var tutors []Tutor
+	var tutors []Tutorr
 	for results.Next() {
-		var t Tutor
+		var t Tutorr
 		err3 := results.Scan(&t.TutorId, &t.FirstName, &t.LastName, &t.Rating)
 
 		if (err3 != nil) {

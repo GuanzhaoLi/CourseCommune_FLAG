@@ -13,6 +13,7 @@ func tutorPickVideo(w http.ResponseWriter, r *http.Request) {
 	type PickedVideo struct {
 		VideoId int64
 		TutorId int64
+		Agreed int64
 	}
 
 	var pv PickedVideo
@@ -24,6 +25,7 @@ func tutorPickVideo(w http.ResponseWriter, r *http.Request) {
 	var vt VideoOrder
 	vt.OrderId = pv.VideoId
 	vt.FulfilledBy = pv.TutorId
+	vt.Agreed = pv.Agreed
 
 	err2 := updateVideoToDB(&vt)
 	if (err2 != nil) {
@@ -32,7 +34,6 @@ func tutorPickVideo(w http.ResponseWriter, r *http.Request) {
 }
 
 func updateVideoToDB(vt *VideoOrder) error {
-	_, err2 := DB.Exec("update VideoOrder set EndTime = ?, FulfilledBy = ? where OrderId = ?", time.Now(), vt.FulfilledBy, vt.OrderId)
-
+	_, err2 := DB.Exec("update VideoOrder set EndTime = ?, FulfilledBy = ?, Agreed = ? where OrderId = ?", time.Now(), vt.FulfilledBy, vt.Agreed, vt.OrderId)
 	return err2
 }

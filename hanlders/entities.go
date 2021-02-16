@@ -13,12 +13,13 @@ type VideoOrder struct {
 	Subject		string `json:"subject"`
 	Level		int64 `json:"level"`
 	Keywords	string `json:"keywords"`
+	Agreed		int64 `json:"agreed"`
 	T_s_rating	int64 `json:"t_s_rating"`  // tutor gives rate on student
-	// T_t_rating	int64 `json:"s_t_rating"`  // 这行是要有的。测试时暂时删掉
+	S_t_rating	int64 `json:"s_t_rating"`	
 }
 
 type QuestionOrder struct {
-	QId			int64 `json:"description"`
+	QId			int64 `json:"QId"`
 	StartTime	time.Time `json:"startTime"`
 	EndTime		time.Time `json:"endTime"`
 	RequestBy	int64 `json:"requestBy"`
