@@ -1,4 +1,5 @@
 package main
+
 import (
 	"time"
 )
@@ -35,6 +36,27 @@ type Criteria struct {
 	Level     int64 
 	Subject   string 
 }
-type keywordst struct {
+type Keywordst struct {
 	Keywords	string
+}
+type Questionn struct {
+	StudentId int64
+	Level int64
+	Subject string
+	Keywords string
+}
+
+type User struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+	IsTutor bool `json:"isTutor"` //does Go have enums?
+}
+
+type Video struct {
+	Id          string `jason:"Id"`
+	User        string `jason:"User"`
+	Date        string `jason:"Date"`
+	Subject     string `jason:"Subject"`
+	Description string `jason:"Description"`
+	Fulefilled  string `jason:"Fulefilled"`
 }

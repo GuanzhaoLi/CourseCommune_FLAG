@@ -29,7 +29,7 @@ func tutorPickVideo(w http.ResponseWriter, r *http.Request) {
 
 	err2 := updateVideoToDB(&vt)
 	if (err2 != nil) {
-		http.Error(w, "failed to send video request", http.StatusInternalServerError)
+		http.Error(w, "failed to update video request", http.StatusInternalServerError)
 	}
 }
 

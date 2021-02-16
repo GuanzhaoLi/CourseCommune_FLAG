@@ -31,7 +31,7 @@ func tutorPickQuestion(w http.ResponseWriter, r *http.Request) {
 	question.Answer = pickQ.Answer
 	err2 := updateQuestionToDB(&question)
 	if (err2 != nil) {
-		http.Error(w, "failed to send video request", http.StatusInternalServerError)
+		http.Error(w, "failed to update answer to database", http.StatusInternalServerError)
 	} else {
 		fmt.Println("successfully accessed database")
 	}

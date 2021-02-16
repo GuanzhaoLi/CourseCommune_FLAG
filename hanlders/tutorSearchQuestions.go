@@ -37,7 +37,7 @@ func tutorSearchQuestions(w http.ResponseWriter, r *http.Request) {
 
 func findQuestionsToAnswer(c *Tcriteria) ([]QuestionOrder, error) {
 	// search for questions
-	_, err2 := DB.Exec("update QuestionOrder set Answer = '' where Answer is null")
+	// _, err2 := DB.Exec("update QuestionOrder set Answer = '' where Answer is null")
 	results, err2 := DB.Query("select QId, StartTime, RequestBy, Keywords, Answer from QuestionOrder where Level = ? AND Subject = ? AND (FulfilledBy is null OR FulfilledBy = ?)", c.Level, c.Subject, c.TutorId)
 	if err2 != nil {
 		panic(err2.Error())

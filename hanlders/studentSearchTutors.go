@@ -32,7 +32,7 @@ func studentSearchTutors(w http.ResponseWriter, r *http.Request) {
 	// encode to JSON
 	err1 := json.NewEncoder(w).Encode(&tutors) // FY, Encoder vs Marshal
 	if (err1 != nil) {
-		http.Error(w, "Failed to read questions from mySQL", http.StatusInternalServerError)
+		http.Error(w, "Failed to read tutors from mySQL", http.StatusInternalServerError)
 	}
 }
 

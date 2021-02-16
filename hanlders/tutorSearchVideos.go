@@ -23,7 +23,7 @@ func tutorSearchVideos(w http.ResponseWriter, r *http.Request) {
 	}
 	er := json.NewEncoder(w).Encode(&vts)
 	if (er != nil) {
-		http.Error(w, "Failed to read questions from mySQL", http.StatusInternalServerError)
+		http.Error(w, "Failed to find video from mySQL", http.StatusInternalServerError)
 	}
 }
 

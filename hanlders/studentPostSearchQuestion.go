@@ -1,13 +1,11 @@
+package main
+
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
-	"path/filepath"
-	"regexp"
-
 	"time"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	jwt "github.com/dgrijalva/jwt-go"
 )
 
 
@@ -15,38 +13,37 @@ func studentPostQuestion(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json") 
 	fmt.Println("0")
-	var q question
+	var q Questionn
 	err1 := json.NewDecoder(r.Body).Decode(&q)
     if err1 != nil {
         http.Error(w, err1.Error(), http.StatusBadRequest) 
 		return
     }
-	fmt.Println("1")
-	fmt.Println(q.StartTime)
+	var qr QuestionOrder
+	qr.RequestBy = q.StudentId
+	qr.Level = q.Level
+	qr.Subject = q.Subject
+	qr.Keywords = q.Keywords
+	qr.StartTime = time.Now()
+	qr.Answer = ""
+
 	// post question to database
-	err2 := postQToDB(&q)
+	err2 := postQToDB(&qr)
 	if (err2 != nil) {
-		fmt.Println("4")
 		http.Error(w, "failed to post question", http.StatusInternalServerError) // FY, error type
 		return
 	}
 }
 
-func postQToDB(vr *VideoOrder) error {
-	_, err2 := DB.Exec("insert into QuestionOrder values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", nil, q.StartTime, q.EndTime, q.RequestBy, q.FulfilledBy, q.Subject, q.Level, q.Keywords, q.Answer, q.s_t_rating)
-
-	return err2
+func postQToDB(qr *QuestionOrder) error {
+	_, err := DB.Exec("insert into QuestionOrder values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", nil, qr.StartTime, qr.EndTime, qr.RequestBy, nil, qr.Subject, qr.Level, qr.Keywords, qr.Answer, qr.S_t_rating)
+	return err
 }
-
-
-
-
-
 
 //receive keyword return []JSON
 func studentSearchQuestions(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json") 
-	var k keywordst
+	var k Keywordst
 	err := json.NewDecoder(r.Body).Decode(&k)
     if err != nil {
         http.Error(w, err.Error(), http.StatusBadRequest)
@@ -64,16 +61,16 @@ func studentSearchQuestions(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func findQuestions(k *keywords) ([]questionn, error) {
-	results, err2 := DB.Query("select QId, StartTime, EndTime, RequestBy, FulfilledBy, Subject, Level, Keywords, Answer, S_t_rating from QuestionOrder where keywords = ?", k)  // SQL 语句 FY
+func findQuestions(k *Keywordst) ([]QuestionOrder, error) {
+	results, err2 := DB.Query("select QId, StartTime, EndTime, RequestBy, FulfilledBy, Subject, Level, Keywords, Answer, S_t_rating from QuestionOrder where keywords = ?", k.Keywords)  // SQL 语句 FY
 	if err2 != nil {
 		panic(err2.Error())
 	}
 	// get all questions searched from database
-	var questions []questionn
+	var questions []QuestionOrder
 	for results.Next() {
-		var t quesitonn
-		err3 := results.Scan(&t.QId, &t.StartTime, &t.EndTime, &t.RequestBy, &t.FulfilledBy, &t.Subject,&t.Level, &t.Keywords, &t.Answer, &t.t_s_rating)
+		var t QuestionOrder
+		err3 := results.Scan(&t.QId, &t.StartTime, &t.EndTime, &t.RequestBy, &t.FulfilledBy, &t.Subject,&t.Level, &t.Keywords, &t.Answer, &t.S_t_rating)
 
 		if (err3 != nil) {
 			panic(err3) // error 处理。 branch中 print 获取失败
