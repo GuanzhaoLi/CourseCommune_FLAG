@@ -13,6 +13,7 @@ func handleRequestsOfQuestion() {
 	// creates a new instance of a mux router
 	myRouter := mux.NewRouter().StrictSlash(true)
 	// myRouter.HandleFunc("/login", Login)
+
 	// student post a video tutoring request
 	myRouter.HandleFunc("/student={user}/requestvideo", studentRequestVideo).Methods("POST")	
 	// student search for tutors 
@@ -25,6 +26,10 @@ func handleRequestsOfQuestion() {
 	myRouter.HandleFunc("/tutor={user}/searchquestions", tutorSearchQuestions).Methods("GET")
 	// tutor search for video requests
 	myRouter.HandleFunc("/tutor={user}/searchvideos", tutorSearchVideos).Methods("GET")
+	//student search for question
+	myRouter.HandleFunc("/student={user}/searchquestions", studentSearchQuestions).Methods("GET")	
+	// student post
+	myRouter.HandleFunc("/student={user}/postquestion", studentPostQuestion).Methods("POST")	
 	log.Fatal(http.ListenAndServe(":10000", myRouter))
 }
 

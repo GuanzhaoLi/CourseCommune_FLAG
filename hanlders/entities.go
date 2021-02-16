@@ -35,3 +35,6 @@ type Criteria struct {
 	Level     int64 
 	Subject   string 
 }
+type keywordst struct {
+	Keywords	string
+}
