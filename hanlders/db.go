@@ -11,7 +11,7 @@ import (
 //数据库配置
 const (
 	userName = "root"
-	password = "courseCommune1"
+	password = "自己密码"
 	ip       = "127.0.0.1"
 	port     = "3306"
 	dbName   = "qa1"
