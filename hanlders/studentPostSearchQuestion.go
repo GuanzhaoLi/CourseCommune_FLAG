@@ -36,7 +36,7 @@ func studentPostQuestion(w http.ResponseWriter, r *http.Request) {
 }
 
 func postQToDB(qr *QuestionOrder) error {
-	_, err := DB.Exec("insert into QuestionOrder values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", nil, qr.StartTime, qr.EndTime, qr.RequestBy, nil, qr.Subject, qr.Level, qr.Keywords, qr.Answer, qr.S_t_rating)
+	_, err := DB.Exec("insert into QuestionOrder values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", nil, qr.StartTime, nil, qr.RequestBy, nil, qr.Subject, qr.Level, qr.Keywords, qr.Answer, qr.S_t_rating)
 	return err
 }
 
