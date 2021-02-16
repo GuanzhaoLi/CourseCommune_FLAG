@@ -12,24 +12,20 @@ import (
 func handleRequestsOfQuestion() {
 	// creates a new instance of a mux router
 	myRouter := mux.NewRouter().StrictSlash(true)
-	// myRouter.HandleFunc("/login", Login)
-
-	// student post a video tutoring request
-	myRouter.HandleFunc("/student={user}/requestvideo", studentRequestVideo).Methods("POST")	
-	// student search for tutors 
-	myRouter.HandleFunc("/student={user}/searchtutors", studentSearchTutors).Methods("GET")
-	// tutor post answer to picked question
+	myRouter.HandleFunc("/user/tuotorsignup", tutorSignupHandler).Methods("POST")
+	myRouter.HandleFunc("/user/studentsignup", studentSignupHandler).Methods("POST")
+	myRouter.HandleFunc("/user/signin", SigninHandler).Methods("POST")
+	myRouter.HandleFunc("/student={user}/history", studentHistory).Methods("GET")
+	myRouter.HandleFunc("/tutor={user}/history", tutorHistory).Methods("GET")
+	myRouter.HandleFunc("/student={user}/postquestion", studentPostQuestion).Methods("POST")
+	myRouter.HandleFunc("/student={user}/searchqustion", studentSearchQuestions).Methods("GET")
+	myRouter.HandleFunc("/student={user}/requestvideo", studentRequestVideo).Methods("POST")
+	myRouter.HandleFunc("/student={user}/searchtutor", studentSearchTutors).Methods("POST")
 	myRouter.HandleFunc("/tutor={user}/pickquestion", tutorPickQuestion).Methods("POST")
-	// tutor post picked video reqest
 	myRouter.HandleFunc("/tutor={user}/pickvideo", tutorPickVideo).Methods("POST")
-	// tutor search for un-answered questions
 	myRouter.HandleFunc("/tutor={user}/searchquestions", tutorSearchQuestions).Methods("GET")
-	// tutor search for video requests
 	myRouter.HandleFunc("/tutor={user}/searchvideos", tutorSearchVideos).Methods("GET")
-	//student search for question
-	myRouter.HandleFunc("/student={user}/searchquestions", studentSearchQuestions).Methods("GET")	
-	// student post
-	myRouter.HandleFunc("/student={user}/postquestion", studentPostQuestion).Methods("POST")	
+
 	log.Fatal(http.ListenAndServe(":10000", myRouter))
 }
 
