@@ -1,5 +1,3 @@
-package main
-
 import (
 	"encoding/json"
 	"fmt"
@@ -27,13 +25,15 @@ func questionPostHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//get user's information from body
-	user := r.Context().Value("user")
-	claims := user.(*jwt.Token).Claims
-	username := claims.(jwt.MapClaims)["username"]
-
-	q := Post{
-		User:    username.(string),
-		Message: r.FormValue("message"),
+	p := QuestionOrder {
+		Qid:	r.formValue("tutorID"),
+		studentID:	r.formValue("studentID"),
+		TutorID:	r.formValue("tutorID"),
+		Answer:	 nil,
+		level:		r.formValue("level"),
+		subject:	r.formValue("subject"),
+		Description:	r.formValue("description"),
+		Finished:	false,
 	}
 
 	// post the question
@@ -75,33 +75,4 @@ func QuestionSearchHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.Write(js)
-}
-
-// signin sign up handler:
-//url: /signup
-func signupHandler(w http.ResponseWriter, r *http.Request) {
-	//request body should contain a user
-
-	//check if the username already exists
-
-	// will return http.StatusBadRequest if username already exists
-
-
-
-}
-
-//url: /signin
-func signinHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/plain")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-
-	if r.Method == "OPTIONS" {
-		return
-	}
-
-	//It returns an encrypted token if sign in succeeds.
-	//It returns status unauthorized if username or password is incorrect.
- 	//It could also return an status internal server error if an error occurs that is caused by the database operations or the token encryption.
-
 }

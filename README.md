@@ -1,2 +1,1 @@
 # CourseCommune_FLAG
-yzcheck

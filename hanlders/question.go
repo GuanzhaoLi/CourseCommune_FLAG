@@ -6,6 +6,8 @@ import (
 
 	"github.com/olivere/elastic"
 	"github.com/pborman/uuid"
+	"github.com/go-sql-driver/mysql"
+
 )
 
 const (
