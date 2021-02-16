@@ -54,7 +54,7 @@ function Login (props) {
                         },
                     ]}
                 >
-                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="用户名" />
                 </Form.Item>
                 <Form.Item
                     name="password"
@@ -68,7 +68,7 @@ function Login (props) {
                     <Input
                         prefix={<LockOutlined className="site-form-item-icon" />}
                         type="password"
-                        placeholder="Password"
+                        placeholder="密码"
                     />
                 </Form.Item>
                 <Form.Item>
@@ -87,13 +87,10 @@ function Login (props) {
                     <Link className="register-new-account" to="/register">注册新用户</Link>
                 </Form.Item>
             </Form>
-
         </div>
 
     );
 };
-
-
 
 export default Login;
 

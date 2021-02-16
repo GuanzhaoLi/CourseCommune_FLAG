@@ -13,7 +13,7 @@ function MainContent(props) {
             className="site-layout-background">
             <Search
                 placeholder="input search text"
-                enterButton="Search"
+                enterButton="搜索"
                 size="large"
             />
             <ListData/>
