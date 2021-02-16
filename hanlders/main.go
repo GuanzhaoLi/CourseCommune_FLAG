@@ -33,6 +33,11 @@ func handleRequestsOfQuestion() {
 	// jianheng added. 照葫芦画瓢
 	myRouter.handleFunc("/{user}/tutor_search", searchTutor).Methods("GET")
 	http.handleFunc("/{user}/schedule_meeing", requestVideo).Methods("POST")
+	
+	// yanbo added login/register
+	myRouter.Handle("/signup", http.HandlerFunc(signupHandler)).Methods("POST", "OPTIONS")
+        myRouter.Handle("/signin", http.HandlerFunc(signinHandler)).Methods("POST", "OPTIONS")
+
 }
 
 func main() {
