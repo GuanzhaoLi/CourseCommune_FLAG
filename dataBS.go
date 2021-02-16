@@ -43,6 +43,7 @@ func InitDB() {
 
 //Student history, return type interface{}
 func studentHis(studenthis StudentHistory) interface{}{
+	InitDB()
 	var target = studenthis.Id
 	studentres := make([] StudentHistory, 0)
 
@@ -59,12 +60,13 @@ func studentHis(studenthis StudentHistory) interface{}{
 		comment := StudentHistory{Id: id, OrderId: videoid, Qid: questionid}
 		studentres = append(studentres,comment)
 	}
-	//rows.Close()
-	//DB.Close()
+	rows.Close()
+	DB.Close()
 	return studentres
 }
 //Tutor history, return type interface{}
 func toturHis(tutorhis TutorHistory) interface{} {
+	InitDB()
 	var find = tutorhis.Id
 	var tutors = make([]TutorHistory, 0)
 	rows, err := DB.Query("select TH.id, TH.VideoOrder, TH.QuestionOrder from Tutor_History TH join Tutor TU on TH.id = TU.TutorId where TH.id = ?" ,find)
@@ -79,8 +81,8 @@ func toturHis(tutorhis TutorHistory) interface{} {
 		comment := TutorHistory{Id: id, OrderId: videoid, Qid: questionid}
 		tutors = append(tutors,comment)
 	}
-// 	rows.Close()
-// 	DB.Close()
+	rows.Close()
+	DB.Close()
 	return turtors
 }
 //初始化表单
