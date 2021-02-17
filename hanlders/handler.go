@@ -226,10 +226,10 @@ func SigninHandler(w http.ResponseWriter, r *http.Request) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 <<<<<<< Updated upstream
-		"username": user.Username,
+		// "username": user.Username,
 =======
 		"userid":   id,
-		"username": user.Email,
+		"useremail": user.Email,
 >>>>>>> Stashed changes
 		"exp":      time.Now().Add(time.Hour * 24).Unix(),
 	})
