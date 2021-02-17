@@ -12,6 +12,9 @@ import (
 var mySigningKey = []byte("secret")
 
 func studentHistory(w http.ResponseWriter, r *http.Request)  {
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	var s StudentHistory
 	//解析json
 	err := json.NewDecoder(r.Body).Decode(&s)
@@ -35,6 +38,9 @@ func studentHistory(w http.ResponseWriter, r *http.Request)  {
 }
 
 func tutorHistory(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	var t TutorHistory
 	err := json.NewDecoder(r.Body).Decode(&t)
 	if err != nil {
@@ -183,8 +189,9 @@ func SigninHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func studentPostQuestion(w http.ResponseWriter, r *http.Request) {
-
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	fmt.Println("0")
 	var q Questionn
 	err1 := json.NewDecoder(r.Body).Decode(&q)
@@ -209,8 +216,9 @@ func studentPostQuestion(w http.ResponseWriter, r *http.Request) {
 }
 
 func studentSearchQuestions(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var k Keywordst
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	var k Keywordst
 	err := json.NewDecoder(r.Body).Decode(&k)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -230,8 +238,9 @@ func studentSearchQuestions(w http.ResponseWriter, r *http.Request) {
 
 func studentRequestVideo(w http.ResponseWriter, r *http.Request) {
 
-	w.Header().Set("Content-Type", "application/json")
-	fmt.Println("0")
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	fmt.Println("0")
 	var vr VideoOrder
 	err1 := json.NewDecoder(r.Body).Decode(&vr)
 	if err1 != nil {
@@ -250,8 +259,9 @@ func studentRequestVideo(w http.ResponseWriter, r *http.Request) {
 }
 
 func studentSearchTutors(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var c Criteria
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	var c Criteria
 	err := json.NewDecoder(r.Body).Decode(&c)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -269,8 +279,9 @@ func studentSearchTutors(w http.ResponseWriter, r *http.Request) {
 }
 func tutorPickQuestion(w http.ResponseWriter, r *http.Request) {
 
-	w.Header().Set("Content-Type", "application/json")
-
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	var question QuestionOrder
 	var pickQ PickQuestion
 	err1 := json.NewDecoder(r.Body).Decode(&pickQ)
@@ -291,8 +302,9 @@ func tutorPickQuestion(w http.ResponseWriter, r *http.Request) {
 }
 
 func tutorPickVideo(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	type PickedVideo struct {
 		VideoId int64
 		TutorId int64
@@ -317,8 +329,9 @@ func tutorPickVideo(w http.ResponseWriter, r *http.Request) {
 }
 
 func tutorSearchQuestions(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
 	var c Tcriteria
 	err := json.NewDecoder(r.Body).Decode(&c)
@@ -340,8 +353,9 @@ func tutorSearchQuestions(w http.ResponseWriter, r *http.Request) {
 
 
 func tutorSearchVideos(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-
+	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	var c Tcriteria
 	err := json.NewDecoder(r.Body).Decode(&c)
 	if err != nil {
