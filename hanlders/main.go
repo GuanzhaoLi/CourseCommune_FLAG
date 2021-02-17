@@ -9,7 +9,7 @@ import (
 )
 
 
-func handleRequestsOfQuestion() {
+func handler() {
 	// creates a new instance of a mux router
 	myRouter := mux.NewRouter().StrictSlash(true)
 	myRouter.HandleFunc("/user/tuotorsignup", tutorSignupHandler).Methods("POST", "OPTIONS")
@@ -32,5 +32,5 @@ func handleRequestsOfQuestion() {
 func main() {
 	fmt.Println("Started")
 	InitDB()
-	handleRequestsOfQuestion()
+	handler()
 }
