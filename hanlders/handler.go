@@ -218,7 +218,8 @@ func studentPostQuestion(w http.ResponseWriter, r *http.Request) {
 func studentSearchQuestions(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/plain")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	var k Keywordst
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	
+	var k Keywordst
 	err := json.NewDecoder(r.Body).Decode(&k)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -240,7 +241,8 @@ func studentRequestVideo(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/plain")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	fmt.Println("0")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	
+	fmt.Println("0")
 	var vr VideoOrder
 	err1 := json.NewDecoder(r.Body).Decode(&vr)
 	if err1 != nil {
@@ -261,7 +263,8 @@ func studentRequestVideo(w http.ResponseWriter, r *http.Request) {
 func studentSearchTutors(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/plain")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	var c Criteria
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")	
+	var c Criteria
 	err := json.NewDecoder(r.Body).Decode(&c)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
